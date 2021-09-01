@@ -1,38 +1,9 @@
 #include <iostream>
 using namespace std;
 
-class Persona
-{
-protected:
-    string name;
-    int age;
-public:
-    Persona(){
-        name = "";
-        age = 0;
-    }
-    Persona(string name, int age){
-        this->name = name;
-        this->age = age;
-    }
 
-    virtual int typeUser() = 0;
 
-    string getName(){
-        return this->name;
-    }
-    void setName(string name){
-        this->name = name;
-    }
-    int getAge(){
-        return this->age;
-    }
-    void setAge(int age){
-        this->age = age;
-    }
-};
-
-class User : public Persona{
+class User{
 protected:
     string userName;
     string password;
@@ -50,9 +21,9 @@ public:
         this->password = password;
     }
 
-    int typeUser() override{
-        return 0; // 0 is for normal user, 1 is for admin
-    }
+    // int typeUser() override{
+    //     return 0; // 0 is for normal user, 1 is for admin
+    // }
 // - - - - - - - SETTERS Y GETTERS - - - - - - -
     string getUserName(){
         return this->userName;
@@ -79,21 +50,21 @@ public:
         this->cvc = cvc;
     }
 
-    friend ostream &operator >>(istream &write, User &user){
-        cout << "Write your full name >> "; 
-        write >> user.name;
-        cout << "Write the password >> ";
-        write >> user.password;
-        cout << "";
-    }
+    // friend ostream &operator >>(istream &write, User &user){
+    //     cout << "Write your full name >> "; 
+    //     write >> user.name;
+    //     cout << "Write the password >> ";
+    //     write >> user.password;
+    //     cout << "";
+    // }
 };
 
 class Admin : public User{
     Admin(string name, int age, string userName, string password) : User(name, age, userName, password){}
 
-    int typeUser() override{
-        return 1;
-    }
+    // int typeUser() override{
+    //     return 1;
+    // }
 };
 
 class Data {};
